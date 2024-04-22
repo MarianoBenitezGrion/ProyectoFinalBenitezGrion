@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gynkgo | Pagina de Inicio</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/toastify-js/src/toastify.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="./css/styles.css">
+</head>
+<body>
+    <header>
+        <div class="centrado"><h1>Gynkgo</h1></div>
+        <div class="derecha"><button id="btn-modo"></button></div>
+    </header>
+    <nav>
+        <a href="#">Inicio</a>
+        <a href="./pages/contacto.html">Contacto</a>
+        <a href="#estampas">Estampas</a>
+        <a href="#productos">Productos</a>
+        <a href="./pages/carrito.html">Carrito</a>
+    </nav>
+    <section>
+        <h2>Estampas</h2>
+        <div class="grilla-inicio" id="estampas">
+            <div class="foto-cabeza"><img src="./img/IMG-20240410-WA0014.jpg" alt="estampa3" /></div>
+            <div class="cuerpo-iz1"><img src="./img/IMG-20240410-WA0016.jpg" alt="estampa1" /></div>
+            <div class="cuerpo-der"><img src="./img/IMG-20240410-WA0009.jpg" alt="estampa2" /></div>
+            <div class="cuerpo-iz2"><img src="./img/IMG-20240410-WA0013.jpg" alt="estampa4" /></div>
+        </div>
+        <h2>Productos</h2>
+        <div id="productos">
+            <div class="filtro">
+                <select name="slOrden" id="slOrden">
+                    <option value="1">precio de mayor a menor</option>
+                    <option value="2">precio de menor a mayor</option>
+                    <option value="3">nombre de producto</option>
+                </select>
+            <input id="txtFiltro" type="text" name="txtFiltro" placeholder="ingrese un nombre o categoria de producto">
+            <button id="btnBuscar">Buscar</button>
+            </div>
+            <p>promedio: $<label id="lblPromedio"></label></p>
+            <section class="texto">
+                
+            
+            </section>
+        </div>
+        
+
+    </section>
+    <div class="carrito">
+    <a href="./pages/carrito.html"><button id="btnCarrito"  style="font-size:24px"> <i class="fa fa-shopping-cart"></i></button></a>
+</div>
+    
+<a href="https://api.whatsapp.com/send?phone=01123445&text=Hola%21%20Quisiera%20m%C3%A1s%20informaci%C3%B3n%20sobre%20Varela%202." class="float" target="_blank">
+<i class="fa fa-whatsapp my-float"></i>
+</a>
+    <footer>
+        <div class="d-flex">
+            <div>
+                <h3>Navegacion</h3>
+                <ul>
+                    
+                    <li><a href="#">Inicio</a></li>
+                    <li><a href="./pages/contacto.html">Contacto</a></li>
+                </ul>
+            </div>
+            <div>
+                <h3>Selecciona una seccion</h3>
+                <ul>
+                    <li><a href="#estampas">estampas</a></li>
+                    <li><a href="#productos">productos</a></li>
+                    <li><a href="./pages/carrito.html">carrito</a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/toastify-js"></script>
+    <script src="./js/main.js"></script>
+
+</body>
+</html>

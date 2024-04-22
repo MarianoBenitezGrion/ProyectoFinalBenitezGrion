@@ -1,0 +1,252 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+header, nav{
+    padding:2px;
+    background-color: #679AEA;
+    color:white;
+    justify-content: space-between;
+    
+}
+header{
+    padding: 10px;
+
+    
+    display: flex;
+}
+header div.centrado, nav{
+    width: 100%;
+    flex-shrink: 1;
+    text-align: center;
+}
+header div.derecha{
+    text-align: end;
+    
+}
+nav a{
+    color: white;
+}
+footer{
+    padding:15px;
+    background-color: #679AEA;
+    color:white;
+    text-justify: center;
+    align-content: center;
+}
+body{
+    height: 100vh;
+    background-color: #DFE5EF;
+}
+body.modo-oscuro header, body.modo-oscuro footer{
+background-color: #0F2D5C;
+}
+body footer ul li a{
+    color:white;
+}
+body.modo-oscuro{
+    background-color: black;
+}
+footer div{
+    justify-content: center;
+    width: 100%;
+    text-align: center;
+    gap: 10px;
+}
+footer div ul li{
+    list-style: none;
+}
+body.modo-oscuro section{
+    color: white;
+}
+header div button{
+    background: rgba(0, 0,0, 0);
+    border-style: none;
+    color: white;
+    
+}
+section {
+    text-align: center;
+    justify-content: center;
+}
+section div.grilla-inicio{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 2fr 2fr;
+    justify-content:center;
+    margin-top: 10px;
+
+}
+div.grilla-inicio div.foto-cabeza{
+    grid-column: span 2;
+    background-image: cover;
+    width: 100%;
+}
+div img{
+    width: 100%;
+    height: 100%;
+}
+div.grilla-inicio div.foto-iz1{
+    grid-column: 1;
+    grid-row: span 2;
+
+    background-image:cover;
+    
+}
+div.grilla-inicio div.foto-iz2{
+    grid-column: 1;
+    grid-row: span 2;
+    
+
+    background-image: cover;
+}
+div.grilla-inicio div.foto-der{
+    grid-row:2 / span 2;
+    background-image: cover;
+    height: 100%;
+}
+
+div.filtro{
+    display:flex;
+    gap:10px;
+    justify-content: center;
+    text-align: center;
+}
+.filtro input{
+    width: 300px;
+    
+}
+.filtro input, .filtro select, .filtro button{
+    margin-bottom: 20px;
+}
+section.texto{
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    
+}
+body.modo-oscuro section.texto article.borde{
+    background-color: #3B3C3D;
+}
+section.texto article.borde{
+    
+    margin-bottom: 5px;
+    justify-content:center;
+    text-align: center;
+    border: 2px solid black;
+    background-color: #CED3DA;
+    padding: 10px;
+    width: 300px;
+}
+section.texto article.borde div.contenedor-producto{
+    
+    
+    justify-content:space-around;
+}
+div.producto-seleccionado{
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid black;
+    margin-bottom: 2px;
+    background-color: #CED3DA;
+    width: 100%;
+}
+div.producto-seleccionado div{
+width:550px;
+
+gap: 10px;
+justify-content: center;
+align-items: center;
+
+}
+div.producto-seleccionado button{
+margin:2px;
+width: 20px;
+    height: 20px;
+    }
+div.producto-seleccionado img{
+    width:50px;
+}
+body.modo-oscuro div.producto-seleccionado{
+    background-color: #3B3C3D;
+}
+.rojo{
+    color: red;
+}
+.d-flex{
+    display: flex;
+}
+.d-none{
+    display: none;
+}
+div.estructura-carrrito{
+    
+    display:grid;
+    height: 100%;
+    grid-template-areas: 
+    "header"
+    "section"
+    "footer";
+}
+div.estructura-carrito section div#carrito{
+height: 100vh;
+align-content: center;
+}
+div.estructura-carrrito header, div.estructura-carrrito nav{
+grid-area: header;
+}
+div.estructura-carrrito section{
+    grid-area: section;
+    align-items: center;
+}
+div.estructura-carrrito footer{
+grid-area: footer;
+}
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:#25d366;
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+    font-size:30px;
+	box-shadow: 2px 2px 3px #999;
+    z-index:100;
+}
+
+.my-float{
+	margin-top:16px;
+}
+#addToCart {
+    display:block;
+    position:fixed;
+    text-align:center;
+    background:black;
+    color:white;
+    bottom:20px; 
+    left:20px;
+    right:20px;
+    padding:20px;
+  }
+  .carrito button{
+    display:block;
+    position:fixed;
+    text-align:center;
+    border-radius: 100%;
+    
+    bottom:120px; 
+    
+    right:40px;
+    padding:10px;
+  }
