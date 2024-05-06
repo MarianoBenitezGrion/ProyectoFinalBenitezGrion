@@ -6,6 +6,8 @@ let btnCarrito=document.querySelector("#btnCarrito");
 let btnModoBody=body.querySelector("#btn-modo");
 let icono=body.querySelector("#btn-modo");
 let arrayProductos=[];
+//localhost para funcionamiento local
+//const jsonEnlace="http://localhost:5500/data/productos.json";
 const jsonEnlace="/ProyectoFinalBenitezGrion/data/productos.json";
 if(modoSeleccionado==="modo-oscuro"){
     body.classList.add("modo-oscuro");
@@ -54,12 +56,7 @@ if(carrito.length===0&&carritoLS.length>0){
 if (carritoLS.length === 0) {
     localStorage.setItem("carritoLS",JSON.stringify(carrito));
 }
-/*if(carritoLS!==undefined){
-    
-    carritoLS.forEach((el)=>{console.log("LOCALSTORAGE: ",el)});
-}else{
-    localStorage.setItem("carritoLS",JSON.stringify(carrito));
-}*/
+
 const cargarProductosJSON=()=>{
     fetch(jsonEnlace,{
         headers : { 
@@ -74,54 +71,12 @@ const cargarProductosJSON=()=>{
 }
 
 
-/*const arrayProductos=[{
-    id:1,
-    nombre: "Remera Blanca Lisa",
-    categoria:"indumentaria",
-    img:"./img/remera-blanca-lisa.jpg",
-    precio: 21000
 
-},
-
-{
-    id:2,
-    nombre:"Remera Negra Lisa",
-    categoria:"indumentaria",
-    img:"./img/remera-negra-lisa.png",
-    precio:22000
-},
-
-{
-    id:3,
-    nombre:"Remera Blanca con Flor",
-    categoria:"indumentaria",
-    img:"./img/remera-blanca-flor.JPG",
-    precio:22000
-},
-{
-    id:4,
-    nombre:"Remera Gris",
-    categoria: "indumentaria",
-    img:"./img/remera-gris.jpg",
-    precio:2000
-},
-{
-    id:6,
-    nombre:"Remera Marron",
-    categoria:"indumentaria",
-    img:"./img/remera-marron.jpeg",
-    precio:2400
-}
-
-];*/
 
 const div=document.querySelector("#resultado-total");
 const p=document.createElement("p");
 
-function mostrarPromedio(prom){
-labelProm=document.querySelector("#lblPromedio");
-labelProm.innerHTML=prom;
-}
+//select
 function obtenerOrden(sl){
     switch(parseInt(sl)){
         case 1:
@@ -257,20 +212,13 @@ carritoLS=JSON.parse(localStorage.getItem("carritoLS"));
 }
 
 
-function calcularPromedio(array){
-    let suma=array.reduce((acc,producto)=>acc+producto.precio,0);
-    let cantidad=array.reduce((cont)=>cont+1,0);
-    console.log(suma);
-    console.log(cantidad);
-    return (suma/cantidad).toFixed(2);
-}
+
 
 const sl=document.getElementById("slOrden").value;
 console.log(sl);
 obtenerOrden(sl);
 mostrarResultados(arrayProductos);
-let promedio=calcularPromedio(arrayProductos);
-mostrarPromedio(promedio);
+
 const btnBuscar=document.getElementById("btnBuscar");
 btnBuscar.addEventListener("click",
 ()=>{
@@ -287,13 +235,11 @@ btnBuscar.addEventListener("click",
     obtenerOrden(slClick,arrayFiltrado);
     console.log(arrayFiltrado);
     
-    promedio=calcularPromedio(arrayFiltrado);
-    mostrarPromedio(promedio);
+  
     }else{
         obtenerOrden(slClick,arrayProductos);
         mostrarResultados(arrayProductos);
-        promedio=calcularPromedio(arrayProductos);
-        mostrarPromedio(promedio);
+
         cargarProductosJSON();
     }
     

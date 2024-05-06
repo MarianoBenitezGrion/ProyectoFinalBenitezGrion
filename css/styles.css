@@ -3,6 +3,16 @@
     margin: 0;
     padding: 0;
 }
+button{
+    background: rgba(0, 0, 0, 0.4);
+    background-color:#679AEA;
+    border:black solid 2px;
+    border-radius: 7px;
+    color: white;
+}
+.modo-oscuro button{
+    background-color: #0F2D5C;
+}
 header, nav{
     padding:2px;
     background-color: #679AEA;
