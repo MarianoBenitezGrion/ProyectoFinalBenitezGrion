@@ -1,0 +1,40 @@
+[{
+    "id":1,
+    "nombre": "Remera Blanca Lisa",
+    "categoria":"indumentaria",
+    "img":"./img/remera-blanca-lisa.jpg",
+    "precio": 21000
+
+},
+
+{
+    "id":2,
+    "nombre":"Remera Negra Lisa",
+    "categoria":"indumentaria",
+    "img":"./img/remera-negra-lisa.png",
+    "precio":22000
+},
+
+{
+    "id":3,
+    "nombre":"Remera Blanca con Flor",
+    "categoria":"indumentaria",
+    "img":"./img/remera-blanca-flor.JPG",
+    "precio":22000
+},
+{
+    "id":4,
+    "nombre":"Remera Gris",
+    "categoria": "indumentaria",
+    "img":"./img/remera-gris.jpg",
+    "precio":2000
+},
+{
+    "id":6,
+    "nombre":"Remera Marron",
+    "categoria":"indumentaria",
+    "img":"./img/remera-marron.jpeg",
+    "precio":2400
+}
+
+]

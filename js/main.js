@@ -5,7 +5,8 @@ let carrito=[];
 let btnCarrito=document.querySelector("#btnCarrito");
 let btnModoBody=body.querySelector("#btn-modo");
 let icono=body.querySelector("#btn-modo");
-
+let arrayProductos=[];
+const jsonEnlace="http://localhost:5500/data/productos.json";
 if(modoSeleccionado==="modo-oscuro"){
     body.classList.add("modo-oscuro");
     icono.innerHTML=`<i class="fa fa-sun-o" style="font-size:30px;"></i>`;
@@ -59,8 +60,21 @@ if (carritoLS.length === 0) {
 }else{
     localStorage.setItem("carritoLS",JSON.stringify(carrito));
 }*/
+const cargarProductosJSON=()=>{
+    fetch(jsonEnlace,{
+        headers : { 
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+         }
+      })
+    .then(res=>res.json())
+    .then(data=>mostrarResultados(data))
+    .catch(error=>console.log(error))
+    
+}
 
-const arrayProductos=[{
+
+/*const arrayProductos=[{
     id:1,
     nombre: "Remera Blanca Lisa",
     categoria:"indumentaria",
@@ -99,7 +113,7 @@ const arrayProductos=[{
     precio:2400
 }
 
-];
+];*/
 
 const div=document.querySelector("#resultado-total");
 const p=document.createElement("p");
@@ -108,17 +122,25 @@ function mostrarPromedio(prom){
 labelProm=document.querySelector("#lblPromedio");
 labelProm.innerHTML=prom;
 }
-function obtenerOrden(sl,array){
+function obtenerOrden(sl){
     switch(parseInt(sl)){
         case 1:
-            array.sort((a,b)=>b.precio-a.precio);
+            fetch(jsonEnlace)
+            .then(res=>res.json())
+            .then(data=>mostrarResultados(data.sort((a,b)=>b.precio-a.precio)))
+            
             
             break;
         case 2:
-            array.sort((a,b)=>a.precio-b.precio);
+            fetch(jsonEnlace)
+            .then(res=>res.json())
+            .then(data=>mostrarResultados(data.sort((a,b)=>a.precio-b.precio)))
+            
             break;
         case 3:
-            array.sort((a, b) => {
+            fetch(jsonEnlace)
+            .then(res=>res.json())
+            .then(data=>mostrarResultados(data.sort((a, b) => {
                 const aL = a.nombre.toLowerCase(); 
                 const bL = b.nombre.toLowerCase(); 
                 if (aL > bL) {
@@ -128,7 +150,9 @@ function obtenerOrden(sl,array){
                     return -1;
                 }
                 return 0;
-            });
+            })
+        ));
+            
 
         break;
             
@@ -241,9 +265,9 @@ function calcularPromedio(array){
     return (suma/cantidad).toFixed(2);
 }
 
-const sl=document.getElementById("slOrden");
+const sl=document.getElementById("slOrden").value;
 console.log(sl);
-obtenerOrden(sl,arrayProductos);
+obtenerOrden(sl);
 mostrarResultados(arrayProductos);
 let promedio=calcularPromedio(arrayProductos);
 mostrarPromedio(promedio);
@@ -255,10 +279,14 @@ btnBuscar.addEventListener("click",
     const txt=document.getElementById("txtFiltro").value.replace(/\s/g, '').toLowerCase();
     console.log(txt);
     if(txt!=""){
-        arrayFiltrado=arrayProductos.filter((el)=>el.categoria.replace(/\s/g, '').toLowerCase()==txt ||el.nombre.replace(/\s/g, '').toLowerCase()==txt);
+        fetch(jsonEnlace)
+        .then(res=>res.json())
+        .then(data=>mostrarResultados(data.filter((el)=>el.categoria.replace(/\s/g, '').toLowerCase()==txt ||el.nombre.replace(/\s/g, '').toLowerCase()==txt)));
+    
+        //arrayFiltrado=arrayProductos.filter((el)=>el.categoria.replace(/\s/g, '').toLowerCase()==txt ||el.nombre.replace(/\s/g, '').toLowerCase()==txt);
     obtenerOrden(slClick,arrayFiltrado);
     console.log(arrayFiltrado);
-    mostrarResultados(arrayFiltrado);
+    
     promedio=calcularPromedio(arrayFiltrado);
     mostrarPromedio(promedio);
     }else{
@@ -266,6 +294,7 @@ btnBuscar.addEventListener("click",
         mostrarResultados(arrayProductos);
         promedio=calcularPromedio(arrayProductos);
         mostrarPromedio(promedio);
+        cargarProductosJSON();
     }
     
     }

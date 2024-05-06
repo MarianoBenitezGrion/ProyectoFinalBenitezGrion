@@ -149,15 +149,23 @@ section.texto article.borde div.contenedor-producto{
     
     justify-content:space-around;
 }
+div#carrrito-seleccion{
+    width: 100%;
+    justify-content: center;
+    
+}
 div.producto-seleccionado{
     border-radius: 20px;
-    display: flex;
+    
     align-items: center;
     justify-content: center;
     border: 2px solid black;
     margin-bottom: 2px;
     background-color: #CED3DA;
     width: 100%;
+    gap: 1%;
+    font-size:67%;
+    
 }
 div.producto-seleccionado div{
 width:550px;
