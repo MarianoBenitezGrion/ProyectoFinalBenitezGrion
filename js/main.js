@@ -6,7 +6,7 @@ let btnCarrito=document.querySelector("#btnCarrito");
 let btnModoBody=body.querySelector("#btn-modo");
 let icono=body.querySelector("#btn-modo");
 let arrayProductos=[];
-const jsonEnlace="/data/productos.json";
+const jsonEnlace="/ProyectoFinalBenitezGrion/data/productos.json";
 if(modoSeleccionado==="modo-oscuro"){
     body.classList.add("modo-oscuro");
     icono.innerHTML=`<i class="fa fa-sun-o" style="font-size:30px;"></i>`;
