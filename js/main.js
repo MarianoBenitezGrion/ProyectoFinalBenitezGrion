@@ -77,19 +77,21 @@ const div=document.querySelector("#resultado-total");
 const p=document.createElement("p");
 
 //select
+let arrayOrdenado=[];
 function obtenerOrden(sl){
+    
     switch(parseInt(sl)){
         case 1:
             fetch(jsonEnlace)
             .then(res=>res.json())
-            .then(data=>mostrarResultados(data.sort((a,b)=>b.precio-a.precio)))
+            .then(data=>mostrarResultados(data.sort((a,b)=>b.precio-a.precio)));
             
             
             break;
         case 2:
             fetch(jsonEnlace)
             .then(res=>res.json())
-            .then(data=>mostrarResultados(data.sort((a,b)=>a.precio-b.precio)))
+            .then(data=>mostrarResultados(data.sort((a,b)=>a.precio-b.precio)));
             
             break;
         case 3:
@@ -105,15 +107,61 @@ function obtenerOrden(sl){
                     return -1;
                 }
                 return 0;
-            })
-        ));
+            }))
+        
+        );
             
 
         break;
             
     }
 }
+function obtenerOrdenMasFiltro(sl,txt){
+    
+    switch(parseInt(sl)){
+        case 1:
+            fetch(jsonEnlace)
+            .then(res=>res.json())
+            .then(data=>{data.sort((a,b)=>b.precio-a.precio);
+                
+                mostrarResultados(data.filter((el)=>el.categoria.replace(/\s/g, '').toLowerCase()==txt ||el.nombre.replace(/\s/g, '').toLowerCase()==txt));
+            });
+            
+            
+            break;
+        case 2:
+            fetch(jsonEnlace)
+            .then(res=>res.json())
+            .then(data=>{data.sort((a,b)=>a.precio-b.precio);
+                
+                mostrarResultados(data.filter((el)=>el.categoria.replace(/\s/g, '').toLowerCase()==txt ||el.nombre.replace(/\s/g, '').toLowerCase()==txt));
+            });
+            
+            break;
+        case 3:
+            fetch(jsonEnlace)
+            .then(res=>res.json())
+            .then(data=>{data.sort((a, b) => {
+                const aL = a.nombre.toLowerCase(); 
+                const bL = b.nombre.toLowerCase(); 
+                if (aL > bL) {
+                    return 1;
+                }
+                if (aL < bL) {
+                    return -1;
+                }
+                return 0;
+            })
+            
+                mostrarResultados(data.filter((el)=>el.categoria.replace(/\s/g, '').toLowerCase()==txt ||el.nombre.replace(/\s/g, '').toLowerCase()==txt));
+            }
+        );
+            
 
+        break;
+            
+    }
+}
 
 
 
@@ -213,7 +261,6 @@ carritoLS=JSON.parse(localStorage.getItem("carritoLS"));
 
 
 
-
 const sl=document.getElementById("slOrden").value;
 console.log(sl);
 obtenerOrden(sl);
@@ -227,24 +274,16 @@ btnBuscar.addEventListener("click",
     const txt=document.getElementById("txtFiltro").value.replace(/\s/g, '').toLowerCase();
     console.log(txt);
     if(txt!=""){
-        fetch(jsonEnlace)
+        obtenerOrdenMasFiltro(slClick,txt);
+        
+       /* fetch(jsonEnlace)
         .then(res=>res.json())
         .then(data=>mostrarResultados(data.filter((el)=>el.categoria.replace(/\s/g, '').toLowerCase()==txt ||el.nombre.replace(/\s/g, '').toLowerCase()==txt)));
-    
-        //arrayFiltrado=arrayProductos.filter((el)=>el.categoria.replace(/\s/g, '').toLowerCase()==txt ||el.nombre.replace(/\s/g, '').toLowerCase()==txt);
-    obtenerOrden(slClick,arrayFiltrado);
-    console.log(arrayFiltrado);
-    
-  
+    */
     }else{
-        obtenerOrden(slClick,arrayProductos);
-        mostrarResultados(arrayProductos);
-
-        cargarProductosJSON();
+        obtenerOrden(slClick);
     }
     
     }
-
-
 );
 

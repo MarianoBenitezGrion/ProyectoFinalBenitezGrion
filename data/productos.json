@@ -27,14 +27,13 @@
     "nombre":"Remera Gris",
     "categoria": "indumentaria",
     "img":"./img/remera-gris.jpg",
-    "precio":2000
+    "precio":20000
 },
 {
-    "id":6,
+    "id":5,
     "nombre":"Remera Marron",
     "categoria":"indumentaria",
     "img":"./img/remera-marron.jpeg",
-    "precio":2400
+    "precio":24000
 }
-
 ]
